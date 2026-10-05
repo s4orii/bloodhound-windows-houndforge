@@ -143,7 +143,7 @@ function Install-DesktopControls {
     $start = @'
 @echo off
 chcp 65001 >nul
-title BloodHound CE - Iniciar
+title HoundForge - Start
 echo [*] Iniciando Docker y BloodHound CE...
 wsl.exe -d "__DISTRO__" -u root -- bash -lc "systemctl start docker 2>/dev/null || service docker start"
 if errorlevel 1 goto error
@@ -154,7 +154,7 @@ start "" http://127.0.0.1:8080/ui/login
 echo [+] BloodHound disponible en http://127.0.0.1:8080/ui/login
 exit /b 0
 :error
-echo [-] No fue posible iniciar BloodHound. Ejecute 02-Estado.cmd.
+echo [-] BloodHound could not be started. Run 02-Status.cmd for details.
 pause
 exit /b 1
 '@.Replace('__DISTRO__', $escapedDistro).Replace('__LINUX_USER__', $escapedLinuxUser)
@@ -162,7 +162,7 @@ exit /b 1
     $status = @'
 @echo off
 chcp 65001 >nul
-title BloodHound CE - Estado
+title HoundForge - Status
 echo === SERVICIOS ===
 wsl.exe -d "__DISTRO__" -u "__LINUX_USER__" -- bloodhound-cli running
 echo.
@@ -176,8 +176,8 @@ pause
     $credentials = @'
 @echo off
 chcp 65001 >nul
-title BloodHound CE - Credenciales locales
-echo Estas credenciales se muestran solamente en este equipo.
+title HoundForge - Local credentials
+echo These credentials are displayed only on this computer.
 powershell.exe -NoProfile -Command "$j = ((wsl.exe -d '__DISTRO__' -u '__LINUX_USER__' -- cat '__CONFIG_DIRECTORY__/bloodhound.config.json') -join [Environment]::NewLine) | ConvertFrom-Json; Write-Host ('Usuario: ' + $j.default_admin.principal_name); Write-Host ('Password: ' + $j.default_admin.password)"
 pause
 '@.Replace('__DISTRO__', $escapedDistro).Replace('__LINUX_USER__', $escapedLinuxUser).Replace('__CONFIG_DIRECTORY__', $escapedConfigDirectory)
@@ -185,42 +185,42 @@ pause
     $stop = @'
 @echo off
 chcp 65001 >nul
-title BloodHound CE - Detener
-echo [*] Deteniendo BloodHound CE...
+title HoundForge - Stop
+echo [*] Stopping BloodHound CE...
 wsl.exe -d "__DISTRO__" -u "__LINUX_USER__" -- bloodhound-cli down
 if errorlevel 1 goto error
-echo [+] BloodHound detenido. Los datos se conservaron.
+echo [+] BloodHound stopped. Data has been preserved.
 pause
 exit /b 0
 :error
-echo [-] Ocurrio un error al detener los contenedores.
+echo [-] The containers could not be stopped.
 pause
 exit /b 1
 '@.Replace('__DISTRO__', $escapedDistro).Replace('__LINUX_USER__', $escapedLinuxUser)
 
     $readme = @"
-BloodHound CE
-=============
+HoundForge
+==========
 
-Interfaz: $($script:BhUrl)
-Distribucion WSL: $($script:SelectedDistro)
-Usuario Linux: $($script:LinuxUser)
+Interface: $($script:BhUrl)
+WSL distribution: $($script:SelectedDistro)
+Linux user: $($script:LinuxUser)
 
-01-Iniciar.cmd      Inicia Docker y BloodHound; abre el navegador.
-02-Estado.cmd       Muestra el estado y prueba la interfaz.
-03-Credenciales.cmd Muestra las credenciales solamente en este equipo.
-04-Detener.cmd      Detiene los servicios sin borrar datos.
+01-Start.cmd       Starts Docker and BloodHound, then opens the browser.
+02-Status.cmd      Shows container status and checks the local interface.
+03-Credentials.cmd Displays credentials only on this computer.
+04-Stop.cmd        Stops the services without deleting data.
 
-La interfaz y los puertos de Neo4j se publican solamente en 127.0.0.1.
-PostgreSQL no se publica al host. Los datos persisten en volumenes Docker.
-Configuracion Linux: $($script:BhConfigDirectory)
+The interface and Neo4j ports are bound only to 127.0.0.1.
+PostgreSQL is not published to the host. Data persists in Docker volumes.
+Linux configuration: $($script:BhConfigDirectory)
 "@
 
-    Set-Content -LiteralPath (Join-Path $folder '01-Iniciar.cmd') -Value $start -Encoding Ascii
-    Set-Content -LiteralPath (Join-Path $folder '02-Estado.cmd') -Value $status -Encoding Ascii
-    Set-Content -LiteralPath (Join-Path $folder '03-Credenciales.cmd') -Value $credentials -Encoding Ascii
-    Set-Content -LiteralPath (Join-Path $folder '04-Detener.cmd') -Value $stop -Encoding Ascii
-    Set-Content -LiteralPath (Join-Path $folder 'LEEME.txt') -Value $readme -Encoding UTF8
+    Set-Content -LiteralPath (Join-Path $folder '01-Start.cmd') -Value $start -Encoding Ascii
+    Set-Content -LiteralPath (Join-Path $folder '02-Status.cmd') -Value $status -Encoding Ascii
+    Set-Content -LiteralPath (Join-Path $folder '03-Credentials.cmd') -Value $credentials -Encoding Ascii
+    Set-Content -LiteralPath (Join-Path $folder '04-Stop.cmd') -Value $stop -Encoding Ascii
+    Set-Content -LiteralPath (Join-Path $folder 'README.txt') -Value $readme -Encoding UTF8
 
     Write-Success "Controles creados en: $folder"
 }
@@ -375,7 +375,7 @@ if ($NoStart) {
 else {
     Write-Step 'Esperando a que la interfaz responda'
     if (-not (Wait-BloodHound -TimeoutSeconds 120)) {
-        throw "Los contenedores arrancaron, pero la interfaz no respondió en $($script:BhUrl). Revise 02-Estado.cmd o ejecute 'bloodhound-cli logs' dentro de WSL."
+        throw "Los contenedores arrancaron, pero la interfaz no respondió en $($script:BhUrl). Revise 02-Status.cmd o ejecute 'bloodhound-cli logs' dentro de WSL."
     }
     Write-Success "BloodHound CE responde en $($script:BhUrl)"
 }
@@ -388,5 +388,5 @@ Write-Host ''
 Write-Success 'Instalación completada.'
 Write-Host "URL: $($script:BhUrl)"
 if (-not $NoDesktopControls) {
-    Write-Host "Credenciales: abra '$DesktopFolderName\03-Credenciales.cmd' en el escritorio."
+    Write-Host "Credenciales: abra '$DesktopFolderName\03-Credentials.cmd' en el escritorio."
 }

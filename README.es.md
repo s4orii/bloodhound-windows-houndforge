@@ -42,9 +42,9 @@ reproducible de BloodHound CE durante revisiones autorizadas de Active Directory
 ### Un clic
 
 1. Descarga o clona este repositorio.
-2. Haz doble clic en `Instalar-BloodHoundCE.cmd`.
+2. Haz doble clic en `Install-HoundForge.cmd`.
 3. Espera que se abra `http://127.0.0.1:8080/ui/login`.
-4. Ejecuta `BloodHound-CE\03-Credenciales.cmd` desde el escritorio para ver las
+4. Ejecuta `BloodHound-CE\03-Credentials.cmd` desde el escritorio para ver las
    credenciales generadas localmente.
 
 ### PowerShell
@@ -76,11 +76,11 @@ La carpeta `BloodHound-CE` contiene:
 
 | Archivo | Función |
 |---|---|
-| `01-Iniciar.cmd` | Inicia Docker y BloodHound y abre la interfaz. |
-| `02-Estado.cmd` | Muestra la salud de los contenedores y prueba la interfaz. |
-| `03-Credenciales.cmd` | Muestra las credenciales solamente en el equipo local. |
-| `04-Detener.cmd` | Detiene los contenedores sin eliminar datos. |
-| `LEEME.txt` | Referencia local resumida. |
+| `01-Start.cmd` | Inicia Docker y BloodHound y abre la interfaz. |
+| `02-Status.cmd` | Muestra la salud de los contenedores y prueba la interfaz. |
+| `03-Credentials.cmd` | Muestra las credenciales solamente en el equipo local. |
+| `04-Stop.cmd` | Detiene los contenedores sin eliminar datos. |
+| `README.txt` | Referencia local resumida. |
 
 ## Parámetros
 
@@ -144,7 +144,7 @@ Sustituye `kali-linux` por el nombre mostrado en `wsl --list --verbose`.
 
 ### La interfaz todavía no responde
 
-Ejecuta `02-Estado.cmd` o revisa los registros desde WSL:
+Ejecuta `02-Status.cmd` o revisa los registros desde WSL:
 
 ```bash
 bloodhound-cli running

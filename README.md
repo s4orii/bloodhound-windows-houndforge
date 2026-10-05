@@ -50,9 +50,9 @@ reproducible BloodHound CE environment for authorized Active Directory reviews.
 ### One click
 
 1. Download or clone this repository.
-2. Double-click `Instalar-BloodHoundCE.cmd`.
+2. Double-click `Install-HoundForge.cmd`.
 3. Wait for the browser to open at `http://127.0.0.1:8080/ui/login`.
-4. Open `BloodHound-CE\03-Credenciales.cmd` on the desktop to display the
+4. Open `BloodHound-CE\03-Credentials.cmd` on the desktop to display the
    generated local credentials.
 
 ### PowerShell
@@ -100,11 +100,11 @@ After installation, the `BloodHound-CE` desktop folder contains:
 
 | File | Purpose |
 |---|---|
-| `01-Iniciar.cmd` | Starts Docker and BloodHound, then opens the UI. |
-| `02-Estado.cmd` | Displays container health and checks the local UI. |
-| `03-Credenciales.cmd` | Displays the generated credentials locally. |
-| `04-Detener.cmd` | Stops the containers without deleting data. |
-| `LEEME.txt` | Short local reference. |
+| `01-Start.cmd` | Starts Docker and BloodHound, then opens the UI. |
+| `02-Status.cmd` | Displays container health and checks the local UI. |
+| `03-Credentials.cmd` | Displays the generated credentials locally. |
+| `04-Stop.cmd` | Stops the containers without deleting data. |
+| `README.txt` | Short local reference. |
 
 ## Parameters
 
@@ -169,7 +169,7 @@ Replace `kali-linux` with the name shown by `wsl --list --verbose`.
 
 ### The UI is not ready
 
-Use `02-Estado.cmd`, or inspect logs from WSL:
+Use `02-Status.cmd`, or inspect logs from WSL:
 
 ```bash
 bloodhound-cli running

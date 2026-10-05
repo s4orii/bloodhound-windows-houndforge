@@ -35,7 +35,7 @@ jobs:
         run: |
           @(
             'Install-BloodHoundCE.ps1',
-            'Instalar-BloodHoundCE.cmd',
+            'Install-HoundForge.cmd',
             'README.md',
             'README.es.md',
             'LICENSE',
