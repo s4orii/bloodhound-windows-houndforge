@@ -1,4 +1,4 @@
-name: Validate installer
+name: Validate HoundForge
 
 on:
   push:

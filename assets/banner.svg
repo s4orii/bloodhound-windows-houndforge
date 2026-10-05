@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-  <title id="title">BloodHound CE WSL Installer</title>
+  <title id="title">HoundForge - BloodHound CE on WSL2</title>
   <desc id="desc">A dark security-themed banner showing connected nodes and a Windows terminal prompt.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -35,8 +35,8 @@
     </g>
   </g>
   <g transform="translate(340 82)">
-    <text x="0" y="54" fill="#f8f7ff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="52" font-weight="700">BloodHound CE</text>
-    <text x="0" y="106" fill="#cdb3ff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="34" font-weight="600">WSL Installer</text>
+    <text x="0" y="54" fill="#f8f7ff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="52" font-weight="700">HoundForge</text>
+    <text x="0" y="106" fill="#cdb3ff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="30" font-weight="600">BloodHound CE on WSL2</text>
     <text x="0" y="158" fill="#a8b4cc" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20">One command. No Docker Desktop. Localhost by default.</text>
     <g transform="translate(0 190)">
       <rect width="690" height="54" rx="12" fill="#070c16" stroke="#2d3d5d"/>

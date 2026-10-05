@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Instalador de BloodHound CE para WSL" width="100%">
+  <img src="assets/banner.svg" alt="HoundForge — BloodHound CE sobre WSL2" width="100%">
 </p>
 
 <p align="center">
-  <strong>Instalador seguro, idempotente y de un clic para ejecutar BloodHound CE en Windows mediante WSL2.</strong><br>
+  <strong>Prepara un entorno listo para usar de BloodHound CE en Windows con un solo clic.</strong><br>
   Docker Engine funciona dentro de Linux: Docker Desktop no es necesario.
 </p>
 
@@ -16,7 +16,8 @@
 
 ## ¿Por qué este proyecto?
 
-El CLI oficial de BloodHound simplifica la administración de contenedores,
+**HoundForge** envuelve el CLI oficial de BloodHound en una instalación segura
+y orientada a Windows. El CLI simplifica la administración de contenedores,
 pero una estación Windows todavía necesita WSL2, una distribución compatible,
 Docker, Compose, puertos seguros y un mecanismo repetible de arranque. Este
 proyecto automatiza todo ese proceso sin requerir Docker Desktop.
