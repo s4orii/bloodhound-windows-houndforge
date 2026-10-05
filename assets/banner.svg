@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">BloodHound CE WSL Installer</title>
+  <desc id="desc">A dark security-themed banner showing connected nodes and a Windows terminal prompt.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#101b32"/>
+      <stop offset="1" stop-color="#15102b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ad6cff" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#ad6cff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="360" rx="28" fill="url(#bg)"/>
+  <circle cx="950" cy="165" r="290" fill="url(#glow)"/>
+  <g opacity=".18" stroke="#99a9c8" stroke-width="1">
+    <path d="M0 72h1200M0 144h1200M0 216h1200M0 288h1200"/>
+    <path d="M120 0v360M240 0v360M360 0v360M480 0v360M600 0v360M720 0v360M840 0v360M960 0v360M1080 0v360"/>
+  </g>
+  <g transform="translate(78 68)" filter="url(#shadow)">
+    <path d="M100 0 190 34v69c0 66-38 119-90 147-52-28-90-81-90-147V34Z" fill="#121d34" stroke="#be7cff" stroke-width="5"/>
+    <path d="M100 33 159 55v48c0 43-23 79-59 103-36-24-59-60-59-103V55Z" fill="#8b4bd8" opacity=".3"/>
+    <g stroke="#f0e8ff" stroke-width="5" stroke-linecap="round">
+      <path d="m68 125 32-35 34 31M100 90v61M68 125l32 26 34-30"/>
+    </g>
+    <g fill="#d7b8ff" stroke="#fff" stroke-width="3">
+      <circle cx="100" cy="82" r="11"/>
+      <circle cx="61" cy="128" r="11"/>
+      <circle cx="100" cy="158" r="11"/>
+      <circle cx="141" cy="124" r="11"/>
+    </g>
+  </g>
+  <g transform="translate(340 82)">
+    <text x="0" y="54" fill="#f8f7ff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="52" font-weight="700">BloodHound CE</text>
+    <text x="0" y="106" fill="#cdb3ff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="34" font-weight="600">WSL Installer</text>
+    <text x="0" y="158" fill="#a8b4cc" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20">One command. No Docker Desktop. Localhost by default.</text>
+    <g transform="translate(0 190)">
+      <rect width="690" height="54" rx="12" fill="#070c16" stroke="#2d3d5d"/>
+      <text x="22" y="35" fill="#74f1b7" font-family="Cascadia Code, Consolas, monospace" font-size="17">PS&gt; .\Install-BloodHoundCE.ps1 -OpenBrowser</text>
+    </g>
+  </g>
+</svg>
