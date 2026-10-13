@@ -204,7 +204,7 @@ pause
 chcp 65001 >nul
 title HoundForge - Local credentials
 echo These credentials are displayed only on this computer.
-powershell.exe -NoProfile -Command "$j = ((wsl.exe -- bash -lc 'cat \"$HOME/.config/bloodhound/bloodhound.config.json\"') -join [Environment]::NewLine) | ConvertFrom-Json; Write-Host ('Usuario: ' + $j.default_admin.principal_name); Write-Host ('Password: ' + $j.default_admin.password)"
+powershell.exe -NoProfile -Command "$ErrorActionPreference = 'Stop'; try { $raw = ((wsl.exe -- sh -lc 'cat $HOME/.config/bloodhound/bloodhound.config.json') -join [Environment]::NewLine); if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($raw)) { throw 'No se pudo leer la configuracion de BloodHound desde el usuario WSL predeterminado.' }; $j = $raw | ConvertFrom-Json -ErrorAction Stop; if (-not $j.default_admin) { throw 'El archivo de configuracion no contiene default_admin.' }; Write-Host ('Usuario: ' + $j.default_admin.principal_name); Write-Host ('Password: ' + $j.default_admin.password) } catch { Write-Host ('[-] ' + $_.Exception.Message) -ForegroundColor Red; exit 1 }"
 pause
 '@.Replace('__LINUX_USER__', $escapedLinuxUser).Replace('__CONFIG_DIRECTORY__', $escapedConfigDirectory)
 
