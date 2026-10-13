@@ -63,6 +63,12 @@ Seleccionar una distribución concreta:
 .\Install-BloodHoundCE.ps1 -Distro kali-linux -OpenBrowser
 ```
 
+Si Windows muestra la distribución, pero las invocaciones con `-d` fallan con
+`WSL_E_DISTRO_NOT_FOUND` o `WSL_E_USER_NOT_FOUND`, utiliza la
+[alternativa basada en el WSL predeterminado](alternatives/default-wsl/README.md).
+Esta variante sigue la distribución y el usuario Linux predeterminados para la
+cuenta de Windows actual.
+
 Instalar WSL y Ubuntu cuando todavía no existen:
 
 ```powershell
