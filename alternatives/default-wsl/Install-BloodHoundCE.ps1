@@ -416,4 +416,3 @@ Write-Host "URL: $($script:BhUrl)"
 if (-not $NoDesktopControls) {
     Write-Host "Credenciales: abra '$DesktopFolderName\03-Credentials.cmd' en el escritorio."
 }
-
